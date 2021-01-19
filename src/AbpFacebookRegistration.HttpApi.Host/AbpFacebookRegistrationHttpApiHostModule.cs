@@ -138,6 +138,15 @@ namespace AbpFacebookRegistration
                           HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             };
           });
+
+      context.Services.AddAuthentication()
+      .AddFacebook(facebook =>
+      {
+        facebook.AppId = configuration["Authentication:Facebook:AppId"];
+        facebook.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+        facebook.Scope.Add("email");
+        facebook.Scope.Add("public_profile");
+      });
     }
 
     private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
@@ -181,19 +190,19 @@ namespace AbpFacebookRegistration
       {
         options.AddPolicy(DefaultCorsPolicyName, builder =>
               {
-            builder
-                      .WithOrigins(
-                          configuration["App:CorsOrigins"]
-                              .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                              .Select(o => o.RemovePostFix("/"))
-                              .ToArray()
-                      )
-                      .WithAbpExposedHeaders()
-                      .SetIsOriginAllowedToAllowWildcardSubdomains()
-                      .AllowAnyHeader()
-                      .AllowAnyMethod()
-                      .AllowCredentials();
-          });
+                builder
+                          .WithOrigins(
+                              configuration["App:CorsOrigins"]
+                                  .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                  .Select(o => o.RemovePostFix("/"))
+                                  .ToArray()
+                          )
+                          .WithAbpExposedHeaders()
+                          .SetIsOriginAllowedToAllowWildcardSubdomains()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+              });
       });
     }
 
