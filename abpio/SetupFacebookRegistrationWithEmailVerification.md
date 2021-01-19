@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this article, I will show you first how to set up **Facebook registration** in an ABP Framework application. Thereafter howto get a user who registered with **Facebook** verified by email.
+In this article, I will show you first how to set up **Facebook registration** in an **ABP Framework** application. Thereafter howto get a user who registered with **Facebook** verified by email.
 
 The sample application has been developed with **Blazor** as UI framework and **SQL Server** as database provider.
 
