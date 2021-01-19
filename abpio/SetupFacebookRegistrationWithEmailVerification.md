@@ -132,6 +132,7 @@ The heavy-lifting happens mainly in the **RegisterModel** file. When an unregist
 * Navigate to the **Login** page and click on the **Facebook** button.
 * You will see a **Facebook** screen that says your app will receive name, profile picture and email address.
 * Next you will land on the **My Customer Register Page**.
+  
 ![Custom Register Page](../images/CustomRegisterPage.jpg)
 
 * Click on the **Register** button to complete the **Facebook registration** (Email is sent in this step).
