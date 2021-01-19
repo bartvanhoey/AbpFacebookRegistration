@@ -124,7 +124,7 @@ When you navigate to the **login page** of your application, you already see the
 
 In the **Pages/Account** folder you find the files needed for the Email Confirmation after User Registration. I copied/pasted these files from the [Account Module](https://github.com/abpframework/abp/tree/dev/modules/account/src/Volo.Abp.Account.Web/Pages/Account) of the **ABP Framework** and adapted them to my needs. By doing so, you override the original files of the Account Module and you can hook in into the registration flow.
 
-The heavy-lifting happens mainly in the **RegisterModel** file. When an unregistered user clicks on the **Facebook** button to login, the **OnPostAsync** method is gets executed.  The **RegisterExternalUserAsync** method to create the user is called next. At the end of the RegisterExternalUserAsync method an email is sent by the **SendEmailToAskForEmailConfirmationAsync** method.
+The heavy-lifting happens mainly in the **RegisterModel** file. When an unregistered user clicks on the **Facebook** button to login, the **OnPostAsync** method gets executed.  The **RegisterExternalUserAsync** method to create the user is called next. At the end of the RegisterExternalUserAsync method an email is sent by the **SendEmailToAskForEmailConfirmationAsync** method.
 
 ## Test the Facebook Registration flow and User Email Verification
 
