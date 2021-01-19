@@ -86,7 +86,7 @@ Add the **AddFacebook** extension method to the **ConfigureAuthentication** meth
 * Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server side.
 * Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
 
-When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! Although Facebook Registration ALREADY works, I would like to show you the Email Confirmation part too.
+When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! Although Facebook Registration ALREADY works, I would like to show you the Email Confirmation part too. -:)
 
 ![Login page with Facebook button](../images/LoginScreen.jpg)
 
@@ -129,9 +129,11 @@ The heavy-lifting happens mainly in the **RegisterModel** file. When an unregist
 ## Test the Facebook Registration flow and User Email Verification
 
 * Start both the **Blazor** and **HttpApi.Host** project to run the application.
-* Navigate to the **Login** page and click on the **Facebook button** link.
+* Navigate to the **Login** page and click on the **Facebook** button.
 * You will see a **Facebook** screen that says your app will receive name, profile picture and email address.
 * Next you will land on the **My Customer Register Page**.
+![Custom Register Page](../images/CustomRegisterPage.jpg)
+
 * Click on the **Register** button to complete the **Facebook registration** (Email is sent in this step).
 * Goto your email inbox and click on the [clicking here](https://localhost:44367/) link to confirm your account.
 * Navigate to the **Login** page and click on the **Facebook** button.
