@@ -1,5 +1,7 @@
 ## Setup Facebook Registration and Email Confirmation on User Registration
 
+![.NET](https://github.com/bartvanhoey/AbpFacebookRegistration/workflows/.NET/badge.svg)
+
 ## Introduction
 
 In this article, I will show you first how to set up **Facebook registration**. Thereafter howto get a user who registered with **Facebook** verified by email.
