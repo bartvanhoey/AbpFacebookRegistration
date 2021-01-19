@@ -86,7 +86,7 @@ Add the **AddFacebook** extension method to the **ConfigureAuthentication** meth
 * Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server side.
 * Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
 
-When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! Although Facebook Registration ALREADY works, I would like to show you the Email Confirmation part too. :-)
+When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! **Although Facebook Registration ALREADY works**, I would like to show you the Email Confirmation part too. :-)
 
 ![Login page with Facebook button](../images/LoginScreen.jpg)
 
