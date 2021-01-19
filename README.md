@@ -38,7 +38,7 @@ You also need a **Gmail** account to follow along.
 * Replace the port number with the port number on which the **SwaggerUI** gets served. You can also find it in file **launchsettings.json** of the **AbpFacebookRegistration.HttpApi.Host** project.
 * Copy **App ID** and **App Secret** in the **Basic Settings** windows.
 
-![Facebook Login Settings](../images/FacebookLoginSettings.jpg)
+![Facebook Login Settings](images/FacebookLoginSettings.jpg)
 
 ### Add the Facebook NuGet Package to HttpApi.Host project
 
@@ -88,7 +88,7 @@ Add the **AddFacebook** extension method to the **ConfigureAuthentication** meth
 
 When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! **Although Facebook Registration ALREADY works**, I would like to show you the Email Confirmation part too. :-)
 
-![Login page with Facebook button](../images/LoginScreen.jpg)
+![Login page with Facebook button](images/LoginScreen.jpg)
 
 ## Gmail Credentials
 
@@ -100,7 +100,7 @@ When you navigate to the **login page** of your application, you already see the
 
 * Find the **EncryptGmailPassword** method and click on **Try it out** first, **Execute** after.
 
-![Encrypt Gmail Password](../images/EncryptGmailPassword.jpg)
+![Encrypt Gmail Password](images/EncryptGmailPassword.jpg)
 
 * Copy the **encrypted Gmail password** in the response body.
 
@@ -133,7 +133,7 @@ The heavy-lifting happens mainly in the **RegisterModel** file. When an unregist
 * You will see a **Facebook** screen that says your app will receive name, profile picture and email address.
 * Next you will land on the **My Customer Register Page**.
   
-![Custom Register Page](../images/CustomRegisterPage.jpg)
+![Custom Register Page](images/CustomRegisterPage.jpg)
 
 * Click on the **Register** button to complete the **Facebook registration** (Email is sent in this step).
 * Goto your email inbox and click on the [clicking here](https://localhost:44367/) link to confirm your account.
@@ -141,7 +141,7 @@ The heavy-lifting happens mainly in the **RegisterModel** file. When an unregist
 
 Et voilà! This is the result. **The user's email address is successfully verified**!
 
-![User verified by email](../images/userverifiedbyemail.jpg)
+![User verified by email](images/userverifiedbyemail.jpg)
 
 You can now force a user who registered with Facebook to confirm his email address before he can use your application.
 
