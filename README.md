@@ -36,7 +36,7 @@ You also need a **Gmail** account to follow along.
 * Choose **Build Connected Experiences** in the **Create an App** window. Continue.
 * Fill in **App Display Name** and click on the **Create App** button.
 * In the **Add Products to Your App** section, find **Facebook Login** and click **Set Up**.
-* Goto the **Facebook Login Settings** and update the settings as in the image below. 
+* Goto the **Facebook Login Settings** and update the settings as in the image below.
 * Replace the port number with the port number on which the **SwaggerUI** gets served. You can also find it in file **launchsettings.json** of the **AbpFacebookRegistration.HttpApi.Host** project.
 * Copy **App ID** and **App Secret** in the **Basic Settings** windows.
 
