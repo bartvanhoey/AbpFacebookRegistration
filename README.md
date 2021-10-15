@@ -4,11 +4,11 @@
 
 ## Introduction
 
-In this article, I will show you first how to set up **Facebook registration** in an **ABP Framework** application. Thereafter howto get a user who registered with **Facebook** verified by email.
+In this article, I will show you how to set up **Facebook registration** in an **ABP Framework** application and, how to get a user who registered with **Facebook** verified by email.
 
 The sample application has been developed with **Blazor** as UI framework and **SQL Server** as database provider.
 
-The best way to follow along, is to start from scratch and start with the article [Setup Email Confirmation on User Registration](https://community.abp.io/articles/setup-email-confirmation-on-user-registration-q0vgxang) as it serves as the base for this article. Alternatively, you can clone the [repository](https://github.com/bartvanhoey/AbpUserVerificationByEmail) of the project.
+The best way to follow along is to start from scratch and start with the article [Setup Email Confirmation on User Registration](https://community.abp.io/articles/setup-email-confirmation-on-user-registration-q0vgxang) as it serves as the base for this article. Alternatively, you can clone the [repository](https://github.com/bartvanhoey/AbpUserVerificationByEmail) of the project.
 
 ```bash
 git clone https://github.com/bartvanhoey/AbpUserVerificationByEmail.git
@@ -29,7 +29,7 @@ You also need a **Gmail** account to follow along.
 
 ## Set up Facebook registration
 
-### Create the app in FACEBOOK for Developers
+### Create the application in FACEBOOK for Developers
 
 * Navigate to [FACEBOOK for Developers](https://developers.facebook.com/apps/) and sign in.
 * Click on the **Create App** button.
@@ -85,10 +85,12 @@ Add the **AddFacebook** extension method to the **ConfigureAuthentication** meth
 ## Open & Run the Application
 
 * Run the `AbpFacebookRegistration.DbMigrator` application to apply the migrations and seed the initial data.
-* Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server side.
+* Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server-side.
 * Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
 
-When you navigate to the **login page** of your application, you already see the **Facebook** button. DO NOT CLICK THE FACEBOOK BUTTON YET! **Although Facebook Registration ALREADY works**, I would like to show you the Email Confirmation part too. :-)
+When you navigate to the **login page** of your application, you already see the **Facebook** button. 
+
+DO NOT CLICK THE FACEBOOK BUTTON YET! **Although Facebook Registration ALREADY works**, I would like to show you the Email Confirmation part too. :-)
 
 ![Login page with Facebook button](images/LoginScreen.jpg)
 
@@ -124,24 +126,24 @@ When you navigate to the **login page** of your application, you already see the
 
 ## Pages/Account folder of the HttpApi.Host project
 
-In the **Pages/Account** folder you find the files needed for the Email Confirmation after User Registration. I copied/pasted these files from the [Account Module](https://github.com/abpframework/abp/tree/dev/modules/account/src/Volo.Abp.Account.Web/Pages/Account) of the **ABP Framework** and adapted them to my needs. By doing so, you override the original files of the Account Module and you can hook in into the registration flow.
+In the **Pages/Account** folder, you find the files needed for the Email Confirmation after User Registration. I copied/pasted these files from the [Account Module](https://github.com/abpframework/abp/tree/dev/modules/account/src/Volo.Abp.Account.Web/Pages/Account) of the **ABP Framework** and adapted them to my needs. By doing so, you override the original files of the Account Module and, you can hook in into the registration flow.
 
-The heavy-lifting happens mainly in the **RegisterModel** file. When an unregistered user clicks on the **Facebook** button to login, the **OnPostAsync** method gets executed.  The **RegisterExternalUserAsync** method to create the user is called next. At the end of the RegisterExternalUserAsync method an email is sent by the **SendEmailToAskForEmailConfirmationAsync** method.
+The heavy-lifting happens mainly in the **RegisterModel** file. When an unregistered user clicks on the **Facebook** button to log in, the **OnPostAsync** method gets executed.  The **RegisterExternalUserAsync** method to create the user is called next. At the end of the RegisterExternalUserAsync method, an email is sent by the **SendEmailToAskForEmailConfirmationAsync** method.
 
 ## Test the Facebook Registration flow and User Email Verification
 
 * Start both the **Blazor** and **HttpApi.Host** project to run the application.
 * Navigate to the **Login** page and click on the **Facebook** button.
-* You will see a **Facebook** screen that says your app will receive name, profile picture and email address.
-* Next you will land on the **My Customer Register Page**.
+* You will see a **Facebook** screen that says your app will receive your name, profile picture, and email address.
+* Next, you will land on the **My Customer Register Page**.
   
 ![Custom Register Page](images/CustomRegisterPage.jpg)
 
-* Click on the **Register** button to complete the **Facebook registration** (Email is sent in this step).
-* Goto your email inbox and click on the [clicking here](https://localhost:44367/) link to confirm your account.
+* Click on the **Register** button to complete the **Facebook registration** (Email sent in this step).
+* Go to your email inbox and click on the [clicking here](https://localhost:44367/) link to confirm your account.
 * Navigate to the **Login** page and click on the **Facebook** button.
 
-Et voilà! This is the result. **The user's email address is successfully verified**!
+Et voilà, this is the result. **The email address of the user is successfully verified**!
 
 ![User verified by email](images/userverifiedbyemail.jpg)
 
