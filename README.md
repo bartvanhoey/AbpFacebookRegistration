@@ -6,15 +6,15 @@
 
 In this article, I will show you how to set up **Facebook registration** in an **ABP Framework** application and, how to get a user who registered with **Facebook** verified by email.
 
-The sample application has been developed with **Blazor** as UI framework and **SQL Server** as database provider.
-
-The best way to follow along is to start from scratch and start with the article [Setup Email Confirmation on User Registration](https://community.abp.io/articles/setup-email-confirmation-on-user-registration-q0vgxang) as it serves as the base for this article. Alternatively, you can clone the [repository](https://github.com/bartvanhoey/AbpUserVerificationByEmail) of the project.
+The best way to follow along is to start from scratch and start with the article [Setup Email Confirmation on User Registration](https://community.abp.io/articles/setup-email-confirmation-on-user-registration-q0vgxang) as it serves as the base for this article. Alternatively, you can clone the [repository](https://github.com/bartvanhoey/AbpFacebookRegistration) of the project.
 
 ```bash
-git clone https://github.com/bartvanhoey/AbpUserVerificationByEmail.git
+git clone https://github.com/bartvanhoey/AbpFacebookRegistration.git
 ```
 
 ## Source Code
+
+The sample application has been developed with **Blazor** as UI framework and **SQL Server** as database provider.
 
 The source code of the completed application is [available on GitHub](https://github.com/bartvanhoey/AbpFacebookRegistration).
 
@@ -23,7 +23,7 @@ The source code of the completed application is [available on GitHub](https://gi
 The following tools are needed to be able to run the solution.
 
 * .NET 5.0 SDK
-* VsCode, Visual Studio 2019 16.8.0+ or another compatible IDE
+* VsCode, Visual Studio 2019 or another compatible IDE
 
 You also need a **Gmail** account to follow along.
 
@@ -41,6 +41,29 @@ You also need a **Gmail** account to follow along.
 * Copy **App ID** and **App Secret** in the **Basic Settings** windows.
 
 ![Facebook Login Settings](images/FacebookLoginSettings.jpg)
+
+## Development
+
+### Creating a new Application
+
+* Install or update the ABP CLI:
+
+```bash
+dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
+```
+
+* Use the following ABP CLI command to create a new Blazor ABP application:
+
+```bash
+abp new AbpFacebookRegistration -u blazor -o AbpFacebookRegistration
+```
+
+### Open & Run the Application
+
+* Open the solution in Visual Studio (or your favorite IDE).
+* Run the `AbpFacebookRegistration.DbMigrator` application to apply the migrations and seed the initial data.
+* Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server-side.
+* Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
 
 ### Add the Facebook NuGet Package to HttpApi.Host project
 
@@ -88,7 +111,7 @@ Add the **AddFacebook** extension method to the **ConfigureAuthentication** meth
 * Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server-side.
 * Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
 
-When you navigate to the **login page** of your application, you already see the **Facebook** button. 
+When you navigate to the **login page** of your application, you already see the **Facebook** button.
 
 DO NOT CLICK THE FACEBOOK BUTTON YET! **Although Facebook Registration ALREADY works**, I would like to show you the Email Confirmation part too. :-)
 

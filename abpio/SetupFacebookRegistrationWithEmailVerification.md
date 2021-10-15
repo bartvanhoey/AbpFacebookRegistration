@@ -39,6 +39,30 @@ You also need a **Gmail** account to follow along.
 
 ![Facebook Login Settings](../images/FacebookLoginSettings.jpg)
 
+## Development
+
+### Creating a new Application
+
+* Install or update the ABP CLI:
+
+```bash
+dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
+```
+
+* Use the following ABP CLI command to create a new Blazor ABP application:
+
+```bash
+abp new AbpFacebookRegistration -u blazor -o AbpFacebookRegistration
+```
+
+### Open & Run the Application
+
+* Open the solution in Visual Studio (or your favorite IDE).
+* Run the `AbpFacebookRegistration.DbMigrator` application to apply the migrations and seed the initial data.
+* Run the `AbpFacebookRegistration.HttpApi.Host` application to start the server-side.
+* Run the `AbpFacebookRegistration.Blazor` application to start the Blazor UI project.
+
+
 ### Add the Facebook NuGet Package to HttpApi.Host project
 
 * Open a command prompt in the **HttpApi.Host** project and run the command below:
