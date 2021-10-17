@@ -1,4 +1,4 @@
-## Setup Facebook Registration and Email Confirmation on User Registration
+## Facebook Registration and Email Confirmation on User Registration
 
 ![.NET](https://github.com/bartvanhoey/AbpFacebookRegistration/workflows/.NET/badge.svg)
 
