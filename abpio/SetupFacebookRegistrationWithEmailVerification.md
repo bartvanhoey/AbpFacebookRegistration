@@ -81,6 +81,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.Facebook
       "AppId" : "YourAppIdHere",
       "AppSecret": "YourAppSecretHere"
     }
+}
 ```
 
 ### Configure the Provider in the HttpApiHostModule of the HttpApi.Host
