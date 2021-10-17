@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.TenantManagement;
 
@@ -39,17 +40,11 @@ namespace AbpFacebookRegistration.Data
 
         public async Task MigrateAsync()
         {
-            try
+            var initialMigrationAdded = AddInitialMigrationIfNotExist();
+
+            if (initialMigrationAdded)
             {
-                if (DbMigrationsProjectExists() && !MigrationsFolderExists())
-                {
-                    AddInitialMigration();
-                    return;
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.LogWarning("Couldn't determinate if any migrations exist : " + e.Message);
+                return;
             }
 
             Logger.LogInformation("Started database migrations...");
@@ -105,21 +100,57 @@ namespace AbpFacebookRegistration.Data
         {
             Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
 
-            await _dataSeeder.SeedAsync(tenant?.Id);
+            await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
+                .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, IdentityDataSeedContributor.AdminEmailDefaultValue)
+                .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, IdentityDataSeedContributor.AdminPasswordDefaultValue)
+            );
+        }
+
+        private bool AddInitialMigrationIfNotExist()
+        {
+            try
+            {
+                if (!DbMigrationsProjectExists())
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            try
+            {
+                if (!MigrationsFolderExists())
+                {
+                    AddInitialMigration();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning("Couldn't determinate if any migrations exist : " + e.Message);
+                return false;
+            }
         }
 
         private bool DbMigrationsProjectExists()
         {
-            var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
+            var dbMigrationsProjectFolder = GetEntityFrameworkCoreProjectFolderPath();
 
             return dbMigrationsProjectFolder != null;
         }
 
         private bool MigrationsFolderExists()
         {
-            var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
+            var dbMigrationsProjectFolder = GetEntityFrameworkCoreProjectFolderPath();
 
-            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "migrations"));
+            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "Migrations"));
         }
 
         private void AddInitialMigration()
@@ -140,8 +171,8 @@ namespace AbpFacebookRegistration.Data
                 fileName = "cmd.exe";
             }
 
-            var procStartInfo = new ProcessStartInfo( fileName,
-                $"{argumentPrefix} \"abp create-migration-and-run-migrator {GetDbMigrationsProjectFolderPath()}\""
+            var procStartInfo = new ProcessStartInfo(fileName,
+                $"{argumentPrefix} \"abp create-migration-and-run-migrator \"{GetEntityFrameworkCoreProjectFolderPath()}\"\""
             );
 
             try
@@ -154,7 +185,7 @@ namespace AbpFacebookRegistration.Data
             }
         }
 
-        private string GetDbMigrationsProjectFolderPath()
+        private string GetEntityFrameworkCoreProjectFolderPath()
         {
             var slnDirectoryPath = GetSolutionDirectoryPath();
 
@@ -166,7 +197,7 @@ namespace AbpFacebookRegistration.Data
             var srcDirectoryPath = Path.Combine(slnDirectoryPath, "src");
 
             return Directory.GetDirectories(srcDirectoryPath)
-                .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+                .FirstOrDefault(d => d.EndsWith(".EntityFrameworkCore"));
         }
 
         private string GetSolutionDirectoryPath()

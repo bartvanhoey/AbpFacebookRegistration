@@ -258,3 +258,5 @@ src/AbpFacebookRegistration.IdentityServer/Logs/*
 src/AbpFacebookRegistration.HttpApi.Host/Logs/*
 src/AbpFacebookRegistration.HttpApi.Host/Logs/*
 src/AbpFacebookRegistration.DbMigrator/Logs/*
+src/AbpFacebookRegistration.Blazor.Server/Logs/*
+src/AbpFacebookRegistration.Blazor.Server.Tiered/Logs/*

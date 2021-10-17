@@ -7,18 +7,18 @@ namespace AbpFacebookRegistration.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class AbpFacebookRegistrationMigrationsDbContextFactory : IDesignTimeDbContextFactory<AbpFacebookRegistrationMigrationsDbContext>
+    public class AbpFacebookRegistrationDbContextFactory : IDesignTimeDbContextFactory<AbpFacebookRegistrationDbContext>
     {
-        public AbpFacebookRegistrationMigrationsDbContext CreateDbContext(string[] args)
+        public AbpFacebookRegistrationDbContext CreateDbContext(string[] args)
         {
             AbpFacebookRegistrationEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<AbpFacebookRegistrationMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<AbpFacebookRegistrationDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new AbpFacebookRegistrationMigrationsDbContext(builder.Options);
+            return new AbpFacebookRegistrationDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

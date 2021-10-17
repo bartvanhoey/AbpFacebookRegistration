@@ -142,26 +142,6 @@ namespace AbpFacebookRegistration.IdentityServer
 
             var configurationSection = _configuration.GetSection("IdentityServer:Clients");
 
-            //Web Client
-            var webClientId = configurationSection["AbpFacebookRegistration_Web:ClientId"];
-            if (!webClientId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["AbpFacebookRegistration_Web:RootUrl"].EnsureEndsWith('/');
-
-                /* AbpFacebookRegistration_Web client is only needed if you created a tiered
-                 * solution. Otherwise, you can delete this client. */
-
-                await CreateClientAsync(
-                    name: webClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "hybrid" },
-                    secret: (configurationSection["AbpFacebookRegistration_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout",
-                    corsOrigins: new[] { webClientRootUrl.RemovePostFix("/") }
-                );
-            }
 
             //Console Test / Angular Client
             var consoleAndAngularClientId = configurationSection["AbpFacebookRegistration_App:ClientId"];
@@ -180,6 +160,7 @@ namespace AbpFacebookRegistration.IdentityServer
                     corsOrigins: new[] { webClientRootUrl.RemovePostFix("/") }
                 );
             }
+            
 
             // Blazor Client
             var blazorClientId = configurationSection["AbpFacebookRegistration_Blazor:ClientId"];
@@ -198,7 +179,9 @@ namespace AbpFacebookRegistration.IdentityServer
                     corsOrigins: new[] { blazorRootUrl.RemovePostFix("/") }
                 );
             }
-
+            
+            
+            
             // Swagger Client
             var swaggerClientId = configurationSection["AbpFacebookRegistration_Swagger:ClientId"];
             if (!swaggerClientId.IsNullOrWhiteSpace())

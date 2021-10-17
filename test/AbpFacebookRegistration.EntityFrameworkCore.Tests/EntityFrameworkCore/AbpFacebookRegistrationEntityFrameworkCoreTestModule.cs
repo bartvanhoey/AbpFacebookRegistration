@@ -11,7 +11,7 @@ using Volo.Abp.Modularity;
 namespace AbpFacebookRegistration.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(AbpFacebookRegistrationEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpFacebookRegistrationEntityFrameworkCoreModule),
         typeof(AbpFacebookRegistrationTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
@@ -47,11 +47,11 @@ namespace AbpFacebookRegistration.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<AbpFacebookRegistrationMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<AbpFacebookRegistrationDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new AbpFacebookRegistrationMigrationsDbContext(options))
+            using (var context = new AbpFacebookRegistrationDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }

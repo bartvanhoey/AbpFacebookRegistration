@@ -9,7 +9,6 @@ namespace AbpFacebookRegistration.Permissions
         public override void Define(IPermissionDefinitionContext context)
         {
             var myGroup = context.AddGroup(AbpFacebookRegistrationPermissions.GroupName);
-
             //Define your own permissions here. Example:
             //myGroup.AddPermission(AbpFacebookRegistrationPermissions.MyPermission1, L("Permission:MyPermission1"));
         }

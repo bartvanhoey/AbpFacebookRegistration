@@ -20,14 +20,14 @@ namespace AbpFacebookRegistration.EntityFrameworkCore
 
         public async Task MigrateAsync()
         {
-            /* We intentionally resolving the AbpFacebookRegistrationMigrationsDbContext
+            /* We intentionally resolving the AbpFacebookRegistrationDbContext
              * from IServiceProvider (instead of directly injecting it)
              * to properly get the connection string of the current tenant in the
              * current scope.
              */
 
             await _serviceProvider
-                .GetRequiredService<AbpFacebookRegistrationMigrationsDbContext>()
+                .GetRequiredService<AbpFacebookRegistrationDbContext>()
                 .Database
                 .MigrateAsync();
         }

@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44396",
-      "sslPort": 44396
+      "applicationUrl": "https://localhost:44387",
+      "sslPort": 44387
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "AbpFacebookRegistration.HttpApi.Host": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44396",
+      "applicationUrl": "https://localhost:44387",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

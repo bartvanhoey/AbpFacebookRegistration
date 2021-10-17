@@ -7,7 +7,7 @@ namespace AbpFacebookRegistration.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpFacebookRegistrationEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpFacebookRegistrationEntityFrameworkCoreModule),
         typeof(AbpFacebookRegistrationApplicationContractsModule)
         )]
     public class AbpFacebookRegistrationDbMigratorModule : AbpModule
