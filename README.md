@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this article, I will show you how to set up **Facebook registration** in an **ABP Framework** application and, how to get a user who registered with **Facebook** verified by email.
+In this article, I will show you first how to set up **Facebook registration** in an **ABP Framework** application. Afterwards, I will show you how this **Facebook** registered user gets verified by email.
 
 The best way to follow along is to start from scratch and start with the article [Setup Email Confirmation on User Registration](https://community.abp.io/articles/setup-email-confirmation-on-user-registration-q0vgxang) as it serves as the base for this article. Alternatively, you can clone the [repository](https://github.com/bartvanhoey/AbpFacebookRegistration) of the project.
 
